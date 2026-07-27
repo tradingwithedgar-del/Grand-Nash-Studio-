@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 268 268" role="img" aria-label="Grand Nash">
+  <g fill="none" stroke="#C9A227" stroke-width="10">
+    <rect x="0" y="120" width="100" height="100" fill="#C9A227" stroke="none"/>
+    <rect x="120" y="120" width="100" height="100"/>
+    <rect x="120" y="0" width="100" height="100"/>
+  </g>
+</svg>
