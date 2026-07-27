@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Grand Nash Studio</title>
+<meta name="description" content="How Grand Nash Studio collects, uses, and protects the information you submit through our inquiry form.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0yNCAtMjQgMjY4IDI2OCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJHcmFuZCBOYXNoIj4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNDOUEyMjciIHN0cm9rZS13aWR0aD0iMTAiPgogICAgPHJlY3QgeD0iMCIgeT0iMTIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI0M5QTIyNyIgc3Ryb2tlPSJub25lIi8+CiAgICA8cmVjdCB4PSIxMjAiIHk9IjEyMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICAgIDxyZWN0IHg9IjEyMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICA8L2c+Cjwvc3ZnPgo=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#0B0C0E;
+  --surface:#131518;
+  --ink:#ECE9E2;
+  --brass:#C9A227;
+  --glass:#9FB6C9;
+  --line:rgba(201,162,39,.28);
+  --hair:rgba(236,233,226,.10);
+  --disp:'Archivo',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--base)}
+body{
+  background:transparent;color:var(--ink);font-family:var(--body);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* fixed full-page background film + dark scrim for readability */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--base)}
+#bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bg-scrim{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(11,12,14,.60),rgba(11,12,14,.80))}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+img,svg,video{display:block}
+
+/* content clears the spine on desktop */
+.site-head,main,.site-foot{padding-left:clamp(20px,6vw,110px);padding-right:clamp(20px,6vw,110px)}
+
+/* ---------- spec spine ---------- */
+.spine{
+  position:fixed;left:0;top:0;bottom:0;width:44px;z-index:40;
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--hair);pointer-events:none;
+}
+.spine span{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+  color:var(--glass);opacity:.55;white-space:nowrap;text-transform:uppercase;
+}
+
+/* ---------- header ---------- */
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:50;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(11,12,14,.9),rgba(11,12,14,0));
+}
+.logo{display:inline-flex;align-items:center;gap:12px}
+.logo .mark{flex:0 0 auto}
+.logo-text{
+  font-family:var(--disp);font-weight:800;font-size:1.02rem;
+  letter-spacing:.11em;color:var(--brass);
+}
+.head-cta{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--brass);color:var(--brass);padding:9px 16px;
+  transition:background .18s ease,color .18s ease;
+}
+.head-cta:hover{background:var(--brass);color:var(--base)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  padding-top:70px;padding-bottom:min(9vh,90px);margin-left:calc(clamp(20px,6vw,110px)*-1);margin-right:calc(clamp(20px,6vw,110px)*-1);
+  padding-left:clamp(20px,6vw,110px);padding-right:clamp(20px,6vw,110px);overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-fallback{position:absolute;inset:0;z-index:0;display:none;width:100%;height:100%;object-fit:cover}
+/* scrim: dark on the left where copy sits, clear to the right where the film breathes */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,var(--base) 4%,rgba(11,12,14,.78) 34%,rgba(11,12,14,.05) 72%),
+             linear-gradient(0deg,rgba(11,12,14,.85) 2%,rgba(11,12,14,0) 30%)}
+.hero-copy{position:relative;z-index:2;max-width:660px}
+.tag{font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--glass);margin-bottom:22px}
+h1{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,9vw,6.2rem);line-height:.92;
+  letter-spacing:-.02em;color:var(--ink)}
+.slogan{font-family:var(--disp);font-weight:800;color:var(--brass);
+  font-size:clamp(1.1rem,2.4vw,1.5rem);letter-spacing:.01em;margin:20px 0 18px}
+.hero-sub{max-width:48ch;font-size:1.08rem;color:rgba(236,233,226,.82)}
+.btn{display:inline-block;margin-top:30px;background:var(--brass);color:var(--base);
+  font-family:var(--disp);font-weight:800;font-size:.98rem;letter-spacing:.01em;
+  padding:15px 30px;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px);background:#e0b833}
+
+/* ---------- bands ---------- */
+.band{padding-top:clamp(70px,11vw,150px);padding-bottom:clamp(70px,11vw,150px);
+  border-top:1px solid var(--line);max-width:1200px}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--glass);margin-bottom:26px}
+h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,4.4vw,3rem);
+  line-height:1.05;letter-spacing:-.015em;max-width:20ch;margin-bottom:26px}
+.prose{max-width:60ch;font-size:1.08rem;color:rgba(236,233,226,.78)}
+
+/* truth statement */
+.statement{font-size:clamp(2rem,6vw,4rem);line-height:1.02;max-width:18ch}
+.statement span{color:var(--brass)}
+.truth .prose{margin-top:30px}
+
+/* steps */
+.steps{list-style:none;display:grid;gap:1px;background:var(--line);
+  grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:10px}
+.steps li{background:rgba(19,21,24,.62);padding:32px 28px}
+.num{font-family:var(--mono);font-size:.9rem;color:var(--brass);letter-spacing:.1em}
+.steps h3{font-family:var(--disp);font-weight:800;font-size:1.3rem;margin:16px 0 10px}
+.steps p{color:rgba(236,233,226,.74);font-size:.98rem}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:10px}
+.proof{background:rgba(19,21,24,.62);padding:34px 30px}
+.proof.open{background:rgba(11,12,14,.45)}
+.ptag{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brass);border:1px solid var(--brass);display:inline-block;padding:3px 10px;margin-bottom:18px}
+.proof.open .ptag{color:var(--glass);border-color:var(--glass)}
+.proof h3{font-family:var(--disp);font-weight:800;font-size:1.5rem;margin-bottom:12px}
+.proof p{color:rgba(236,233,226,.76);font-size:.98rem}
+
+/* start / contact */
+.contact{list-style:none;margin:34px 0 0}
+.contact li{border-top:1px solid var(--hair)}
+.contact li:last-child{border-bottom:1px solid var(--hair)}
+.contact a{display:inline-block;padding:16px 0;font-family:var(--disp);font-weight:800;
+  font-size:clamp(1.2rem,3vw,1.9rem);letter-spacing:-.01em;transition:color .18s ease}
+.contact a:hover{color:var(--brass)}
+.start .btn{margin-top:38px}
+
+/* ---------- footer ---------- */
+.site-foot{border-top:1px solid var(--line);padding-top:44px;padding-bottom:44px}
+.site-foot .logo{margin-bottom:16px}
+.foot-slogan{font-family:var(--disp);font-weight:800;color:var(--brass);font-size:1.05rem;margin-bottom:8px}
+.foot-meta{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:rgba(236,233,226,.5)}
+.foot-rights{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:rgba(236,233,226,.32);margin-top:14px}
+
+/* ---------- scroll reveal ---------- */
+.band{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.band.is-visible{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .steps,.proof-grid{grid-template-columns:1fr}
+  .hero-copy{max-width:100%}
+  .hero::after{background:linear-gradient(0deg,var(--base) 8%,rgba(11,12,14,.35) 55%,rgba(11,12,14,.55) 100%)}
+}
+@media (max-width:720px){
+  .spine{display:none}
+  .site-head{height:60px}
+  .head-cta{padding:7px 12px;font-size:.66rem}
+  .logo-text{font-size:.9rem}
+  .hero-fallback{justify-content:center;padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .band{opacity:1;transform:none;transition:none}
+  .btn:hover{transform:none}
+}
+
+/* ---------- inquiry form ---------- */
+.inquiry{margin-top:34px;max-width:660px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field-wide{grid-column:1 / -1}
+.inquiry label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--glass)}
+.inquiry .opt{color:rgba(159,182,201,.5)}
+.inquiry input,.inquiry textarea{
+  background:var(--surface);border:1px solid var(--hair);color:var(--ink);
+  font-family:var(--body);font-size:1rem;padding:13px 14px;border-radius:0;width:100%;
+  transition:border-color .15s ease}
+.inquiry input:focus,.inquiry textarea:focus{outline:none;border-color:var(--brass)}
+.inquiry textarea{resize:vertical;min-height:120px}
+.honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.inquiry .btn{grid-column:1 / -1;justify-self:start;border:none;cursor:pointer;margin-top:6px}
+.form-status{grid-column:1 / -1;font-family:var(--mono);font-size:.84rem;line-height:1.5;margin-top:2px}
+.form-status.ok{color:var(--glass)}
+.form-status.err{color:#e0b833}
+.form-status.err a,.direct a{color:var(--glass)}
+.direct{margin-top:30px;font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;color:rgba(236,233,226,.55)}
+.direct a:hover{color:var(--brass)}
+@media (max-width:620px){.inquiry{grid-template-columns:1fr}}
+
+/* ---------- consent + legal ---------- */
+.consent .check{display:flex;gap:11px;align-items:flex-start;
+  font-family:var(--body);font-size:.86rem;line-height:1.5;color:rgba(236,233,226,.7);
+  letter-spacing:0;text-transform:none;cursor:pointer}
+.consent input{width:18px;height:18px;margin-top:2px;flex:0 0 auto;accent-color:var(--brass)}
+.consent a{color:var(--glass);text-decoration:underline}
+.consent a:hover{color:var(--brass)}
+.foot-rights a{color:rgba(236,233,226,.5);text-decoration:underline}
+.foot-rights a:hover{color:var(--brass)}
+
+.legal{max-width:760px;margin:0 auto;padding-top:118px;padding-bottom:100px}
+.legal .back{display:inline-block;margin-bottom:34px;font-family:var(--mono);font-size:.74rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--glass)}
+.legal .back:hover{color:var(--brass)}
+.legal h1{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.015em;margin-bottom:8px}
+.legal .eff{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--glass);margin-bottom:14px}
+.legal .note{font-size:.92rem;color:rgba(236,233,226,.6);border-left:2px solid var(--line);padding-left:16px;margin-bottom:40px}
+.legal h2{font-family:var(--disp);font-weight:800;font-size:1.22rem;margin:36px 0 12px}
+.legal p,.legal li{color:rgba(236,233,226,.82);font-size:1rem;line-height:1.7;margin-bottom:12px}
+.legal ul{padding-left:20px;margin-bottom:12px}
+.legal a{color:var(--glass);text-decoration:underline}
+.legal a:hover{color:var(--brass)}
+
+</style>
+</head>
+<body>
+<header class="site-head">
+  <a class="logo" href="index.html" aria-label="Grand Nash Studio, home">
+    <svg class="mark" width="26" height="26" viewBox="-16 -16 492 492" aria-hidden="true">
+      <g fill="none" stroke="#C9A227" stroke-width="12">
+        <rect x="0" y="360" width="100" height="100" fill="#C9A227" stroke="none"/>
+        <rect x="120" y="360" width="100" height="100"/><rect x="120" y="240" width="100" height="100"/>
+        <rect x="240" y="360" width="100" height="100"/><rect x="240" y="240" width="100" height="100"/><rect x="240" y="120" width="100" height="100"/>
+        <rect x="360" y="360" width="100" height="100"/><rect x="360" y="240" width="100" height="100"/><rect x="360" y="120" width="100" height="100"/><rect x="360" y="0" width="100" height="100"/>
+      </g>
+    </svg>
+    <span class="logo-text">GRAND NASH STUDIO</span>
+  </a>
+  <a class="head-cta" href="index.html#start">See a free demo</a>
+</header>
+
+<main class="legal">
+  <a class="back" href="index.html">← Back to site</a>
+  <h1>Privacy Policy</h1>
+  <p class="eff">Effective date: [ADD DATE]</p>
+  <p class="note">This policy explains, in plain language, what happens to the information you send us. It is provided for transparency and is general information, not legal advice.</p>
+
+  <h2>Who we are</h2>
+  <p>Grand Nash Studio ("we," "us") is a web design studio based in Houston, Texas. You can reach us at <a href="mailto:hello@grandnashstudio.com">hello@grandnashstudio.com</a> or (832) 910-8301.</p>
+
+  <h2>What we collect</h2>
+  <p>We only collect what you choose to give us through our inquiry form: your name, your business name, your email address, your phone number (if you provide it), and the details of your request. We ask you not to include sensitive information such as passwords, payment card numbers, or government ID numbers, and we do not request them.</p>
+
+  <h2>Why we collect it</h2>
+  <p>We use your information for one purpose: to respond to your request, build the demo or quote you asked for, and communicate with you about our services. We do not use it for anything you did not reach out for.</p>
+
+  <h2>How your information is handled and shared</h2>
+  <p>Your form submission is delivered to our email inbox through a third-party form service (FormSubmit) that processes the message on our behalf. We do not sell, rent, or trade your personal information to anyone. We share it only where necessary to respond to you, or if required by law.</p>
+
+  <h2>Agreeing to be contacted</h2>
+  <p>By submitting the form, you agree that we may contact you about your request by email, phone, or text message using the details you provide. This consent is limited to your inquiry with us. You can ask us to stop contacting you at any time by replying to any message or emailing us, and we will honor it.</p>
+
+  <h2>Keeping and deleting your information</h2>
+  <p>We keep your inquiry only as long as needed to respond and to keep a record of our correspondence. You may ask us to delete your information at any time by emailing <a href="mailto:hello@grandnashstudio.com">hello@grandnashstudio.com</a>, and we will remove it unless we are required to keep it.</p>
+
+  <h2>Security</h2>
+  <p>We take reasonable steps to protect the information you send us. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security, which is another reason we ask you not to send sensitive details through the form.</p>
+
+  <h2>Cookies and tracking</h2>
+  <p>This website does not set advertising or tracking cookies. If we add basic analytics in the future to understand site traffic, we will update this policy first.</p>
+
+  <h2>Children</h2>
+  <p>This site and our services are intended for business owners and are not directed to children under 13. We do not knowingly collect information from children.</p>
+
+  <h2>Your choices and rights</h2>
+  <p>Depending on where you live, you may have the right to access, correct, or delete the personal information we hold about you, or to opt out of certain uses. To make any such request, email us at <a href="mailto:hello@grandnashstudio.com">hello@grandnashstudio.com</a> and we will respond as required by applicable law.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy from time to time. When we do, we will change the effective date at the top of this page.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or your information? Email <a href="mailto:hello@grandnashstudio.com">hello@grandnashstudio.com</a> or call (832) 910-8301.</p>
+</main>
+
+<footer class="site-foot">
+  <div class="logo">
+    <svg class="mark" width="22" height="22" viewBox="-16 -16 492 492" aria-hidden="true">
+      <g fill="none" stroke="#C9A227" stroke-width="12">
+        <rect x="0" y="360" width="100" height="100" fill="#C9A227" stroke="none"/>
+        <rect x="120" y="360" width="100" height="100"/><rect x="120" y="240" width="100" height="100"/>
+        <rect x="240" y="360" width="100" height="100"/><rect x="240" y="240" width="100" height="100"/><rect x="240" y="120" width="100" height="100"/>
+        <rect x="360" y="360" width="100" height="100"/><rect x="360" y="240" width="100" height="100"/><rect x="360" y="120" width="100" height="100"/><rect x="360" y="0" width="100" height="100"/>
+      </g>
+    </svg>
+    <span class="logo-text">GRAND NASH STUDIO</span>
+  </div>
+  <p class="foot-rights">© 2026 Grand Nash Studio. All rights reserved. · <a href="index.html">Home</a></p>
+</footer>
+</body>
+</html>
