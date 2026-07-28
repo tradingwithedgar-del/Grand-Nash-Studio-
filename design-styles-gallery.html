@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Design Styles — Reference Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Serif+Display&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Marcellus&family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Rubik:wght@400;500;600;800&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============ GALLERY CHROME (kept quiet so the cards can speak) ============ */
+  :root{
+    --chrome-bg:#f4f4f5;
+    --chrome-panel:#ffffff;
+    --chrome-ink:#18181b;
+    --chrome-ink-soft:#52525b;
+    --chrome-line:#e4e4e7;
+    --chrome-accent:#18181b;
+    --mono:"Space Mono",ui-monospace,monospace;
+    --ui:"Inter",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--chrome-bg);
+    color:var(--chrome-ink);
+    font-family:var(--ui);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px;}
+
+  /* ---- Header ---- */
+  header.site{
+    border-bottom:1px solid var(--chrome-line);
+    background:var(--chrome-panel);
+    position:sticky;top:0;z-index:50;
+  }
+  .head-inner{
+    display:flex;flex-wrap:wrap;gap:16px 24px;
+    align-items:flex-end;justify-content:space-between;
+    padding:22px 20px 18px;max-width:1240px;margin:0 auto;
+  }
+  .brandline{display:flex;align-items:center;gap:12px;}
+  /* Pixel Ascent mark */
+  .mark{width:26px;height:26px;flex:none;}
+  .mark rect{fill:var(--chrome-ink);}
+  h1.title{
+    font-size:clamp(20px,3.4vw,26px);
+    letter-spacing:-.02em;margin:0;font-weight:800;line-height:1.05;
+  }
+  .subtitle{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;
+    color:var(--chrome-ink-soft);margin:6px 0 0;text-transform:uppercase;
+  }
+  .tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .search{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--chrome-line);border-radius:999px;
+    padding:8px 14px;background:#fafafa;
+  }
+  .search svg{width:15px;height:15px;color:var(--chrome-ink-soft);flex:none;}
+  .search input{
+    border:0;background:transparent;outline:none;font-family:var(--ui);
+    font-size:14px;width:150px;color:var(--chrome-ink);
+  }
+  .count{
+    font-family:var(--mono);font-size:12px;color:var(--chrome-ink-soft);
+    white-space:nowrap;
+  }
+
+  /* ---- Filter chips ---- */
+  .filters{
+    display:flex;gap:8px;flex-wrap:wrap;padding:16px 0 4px;
+  }
+  .chip{
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.04em;border:1px solid var(--chrome-line);
+    background:var(--chrome-panel);color:var(--chrome-ink-soft);
+    padding:7px 12px;border-radius:999px;cursor:pointer;
+    transition:all .15s ease;
+  }
+  .chip:hover{border-color:#a1a1aa;color:var(--chrome-ink);}
+  .chip[aria-pressed="true"]{
+    background:var(--chrome-ink);color:#fff;border-color:var(--chrome-ink);
+  }
+
+  /* ---- Grid ---- */
+  .grid{
+    display:grid;gap:22px;padding:20px 0 60px;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  }
+  .empty{
+    display:none;padding:60px 0;text-align:center;
+    font-family:var(--mono);color:var(--chrome-ink-soft);font-size:13px;
+  }
+
+  /* ---- Card shell ---- */
+  .card{
+    background:var(--chrome-panel);
+    border:1px solid var(--chrome-line);
+    border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(0,0,0,.35);}
+
+  /* The live preview area — each style overrides everything inside .pv */
+  .pv{
+    aspect-ratio:4/3;overflow:hidden;position:relative;
+    border-bottom:1px solid var(--chrome-line);
+    font-size:13px;line-height:1.35;
+  }
+  .pv *{box-sizing:border-box;}
+
+  /* ---- Spec strip ---- */
+  .spec{padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px;}
+  .spec-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .spec-name{font-size:17px;font-weight:700;letter-spacing:-.01em;margin:0;}
+  .spec-idx{font-family:var(--mono);font-size:12px;color:#a1a1aa;}
+  .spec-desc{font-size:13.5px;color:var(--chrome-ink-soft);margin:0;}
+  .swatches{display:flex;gap:6px;}
+  .swatches i{
+    width:20px;height:20px;border-radius:6px;display:block;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);
+  }
+  dl.meta{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;}
+  dl.meta dt{
+    font-family:var(--mono);font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.05em;color:#a1a1aa;padding-top:1px;
+  }
+  dl.meta dd{margin:0;font-size:12.5px;color:var(--chrome-ink);}
+
+  /* ---- Footer ---- */
+  footer.site{
+    border-top:1px solid var(--chrome-line);background:var(--chrome-panel);
+    padding:26px 0 40px;
+  }
+  .foot-inner{
+    display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;
+  }
+  .foot-slogan{font-weight:700;letter-spacing:-.01em;}
+  .foot-meta{font-family:var(--mono);font-size:11.5px;color:var(--chrome-ink-soft);text-transform:uppercase;letter-spacing:.04em;}
+
+  @media (max-width:520px){
+    .grid{grid-template-columns:1fr;}
+    .head-inner{align-items:flex-start;}
+  }
+  @media print{
+    header.site{position:static;}
+    .tools,.filters{display:none;}
+    .card{break-inside:avoid;box-shadow:none;}
+    body{background:#fff;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+
+  /* ==================================================================== */
+  /* ===================  PER-STYLE PREVIEW TREATMENTS  ================== */
+  /* ==================================================================== */
+
+  /* 1 · MINIMALIST — emptiness is the point */
+  .s-minimal{background:#fbfbfa;color:#111;display:flex;flex-direction:column;justify-content:center;padding:34px 30px;}
+  .s-minimal .top{font-family:var(--ui);font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:#111;}
+  .s-minimal h4{font-family:var(--ui);font-weight:300;font-size:26px;letter-spacing:-.02em;margin:auto 0 0;line-height:1.1;}
+  .s-minimal .rule{width:26px;height:1px;background:#111;margin:14px 0 0;}
+  .s-minimal .foot{font-family:var(--ui);font-size:10px;color:#999;letter-spacing:.02em;margin-top:6px;}
+
+  /* 2 · MAXIMALIST — everything, everywhere */
+  .s-maxi{background:#ffde00;color:#111;position:relative;overflow:hidden;font-family:"Archivo Black",sans-serif;}
+  .s-maxi .blob{position:absolute;border-radius:50%;}
+  .s-maxi .b1{width:120px;height:120px;background:#ff2d75;top:-30px;right:-20px;}
+  .s-maxi .b2{width:90px;height:90px;background:#00b3ff;bottom:-24px;left:-16px;mix-blend-mode:multiply;}
+  .s-maxi .star{position:absolute;top:14px;left:14px;font-size:22px;transform:rotate(-12deg);}
+  .s-maxi h4{position:relative;font-size:30px;line-height:.9;margin:0;padding:26px 16px 4px;text-transform:uppercase;-webkit-text-stroke:1px #111;color:#fff;text-shadow:3px 3px 0 #111;}
+  .s-maxi .band{position:relative;background:#111;color:#ffde00;font-size:11px;letter-spacing:.1em;padding:5px 16px;transform:rotate(-2deg);width:max-content;margin:6px 0 0 12px;text-transform:uppercase;}
+  .s-maxi .tag{position:absolute;bottom:12px;right:12px;background:#00b3ff;color:#111;font-size:10px;padding:4px 8px;border:2px solid #111;transform:rotate(6deg);}
+
+  /* 3 · MODERN — clean grotesk, soft gradient, generous air */
+  .s-modern{background:linear-gradient(160deg,#f6f4ff,#eef1ff 60%,#ffffff);color:#1a1830;font-family:"Space Grotesk",sans-serif;padding:26px 24px;display:flex;flex-direction:column;}
+  .s-modern .nav{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#6b6890;}
+  .s-modern .dot{width:9px;height:9px;border-radius:3px;background:#6d5efc;}
+  .s-modern h4{font-size:24px;font-weight:500;letter-spacing:-.03em;margin:auto 0 0;line-height:1.12;}
+  .s-modern p{font-size:12px;color:#6b6890;margin:8px 0 0;}
+  .s-modern .btn{margin-top:14px;align-self:flex-start;background:#6d5efc;color:#fff;font-size:11px;font-weight:500;padding:9px 16px;border-radius:10px;}
+
+  /* 4 · FLAT — solid fills, zero shadow, primary shapes */
+  .s-flat{background:#2d9cdb;color:#fff;font-family:"Inter",sans-serif;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+  .s-flat>div{display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;}
+  .s-flat .c1{background:#2d9cdb;font-size:15px;font-weight:700;letter-spacing:-.01em;}
+  .s-flat .c2{background:#e74c3c;}
+  .s-flat .c3{background:#f1c40f;color:#3a3300;}
+  .s-flat .c4{background:#27ae60;}
+  .s-flat .ic{width:30px;height:30px;border-radius:50%;border:3px solid currentColor;}
+  .s-flat .sq{width:28px;height:28px;background:currentColor;border-radius:5px;}
+  .s-flat .tri{width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:26px solid currentColor;}
+
+  /* 5 · BRUTALIST / NEOBRUTALIST — raw, bordered, offset shadow */
+  .s-brutal{background:#f5f5f0;color:#111;font-family:"Space Mono",monospace;padding:20px;display:flex;flex-direction:column;gap:12px;}
+  .s-brutal .bar{display:flex;justify-content:space-between;font-size:11px;border-bottom:3px solid #111;padding-bottom:6px;}
+  .s-brutal h4{font-size:22px;font-weight:700;line-height:1;margin:4px 0 0;text-transform:uppercase;}
+  .s-brutal .box{background:#c6ff00;border:3px solid #111;box-shadow:5px 5px 0 #111;padding:8px 10px;font-size:11px;width:max-content;}
+  .s-brutal .btn{margin-top:auto;align-self:flex-start;background:#fff;border:3px solid #111;box-shadow:4px 4px 0 #111;padding:8px 14px;font-size:11px;font-weight:700;text-transform:uppercase;}
+
+  /* 6 · RETRO / VINTAGE — warm 70s palette, arched serif */
+  .s-retro{background:#efe2c8;color:#5a3921;font-family:"DM Serif Display",serif;padding:22px 20px;position:relative;overflow:hidden;}
+  .s-retro .sun{position:absolute;top:-40px;right:-30px;width:130px;height:130px;border-radius:50%;background:repeating-linear-gradient(#e8792b 0 10px,#efe2c8 10px 14px);opacity:.5;}
+  .s-retro .badge{font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#a0562d;}
+  .s-retro h4{font-size:30px;line-height:.95;margin:8px 0 0;color:#c0451f;}
+  .s-retro h4 span{color:#e8a13c;}
+  .s-retro .line{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;color:#7a5a3a;margin-top:auto;text-transform:uppercase;}
+
+  /* 7 · EDITORIAL — display serif, hairlines, drop cap, columns */
+  .s-editorial{background:#fff;color:#111;font-family:"Playfair Display",serif;padding:20px;display:flex;flex-direction:column;}
+  .s-editorial .kicker{font-family:"Inter",sans-serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#c0392b;border-top:2px solid #111;border-bottom:1px solid #111;padding:5px 0;display:flex;justify-content:space-between;}
+  .s-editorial h4{font-size:27px;font-weight:900;line-height:1;margin:12px 0 8px;letter-spacing:-.01em;}
+  .s-editorial .body{font-family:"Fraunces",serif;font-size:11px;line-height:1.5;color:#333;column-count:2;column-gap:14px;column-rule:1px solid #ddd;}
+  .s-editorial .body::first-letter{font-size:30px;font-weight:900;float:left;line-height:.8;padding:2px 5px 0 0;font-family:"Playfair Display",serif;}
+
+  /* 8 · CORPORATE / PROFESSIONAL — trust blue, structured, calm */
+  .s-corp{background:#fff;color:#0f2a4a;font-family:"Inter",sans-serif;display:flex;flex-direction:column;}
+  .s-corp .nav{background:#0f2a4a;color:#fff;font-size:11px;display:flex;align-items:center;gap:14px;padding:11px 18px;}
+  .s-corp .nav b{margin-right:auto;font-weight:700;}
+  .s-corp .nav span{color:#a9c4e4;}
+  .s-corp .body{padding:20px 18px;display:flex;flex-direction:column;flex:1;}
+  .s-corp h4{font-size:20px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.15;}
+  .s-corp p{font-size:12px;color:#5a6b80;margin:8px 0 0;}
+  .s-corp .row{margin-top:auto;display:flex;gap:8px;}
+  .s-corp .btn{background:#1466c9;color:#fff;font-size:11px;font-weight:600;padding:9px 16px;border-radius:6px;}
+  .s-corp .btn.ghost{background:#eef4fc;color:#1466c9;}
+
+  /* 9 · PLAYFUL — candy colors, rounded, bouncy */
+  .s-playful{background:#fff4fb;color:#5a2a6b;font-family:"Fredoka",sans-serif;padding:22px 20px;position:relative;overflow:hidden;}
+  .s-playful .blob{position:absolute;width:70px;height:70px;border-radius:42% 58% 60% 40%/45% 45% 55% 55%;}
+  .s-playful .p1{background:#ffd23f;top:-18px;right:24px;}
+  .s-playful .p2{background:#5ce1e6;bottom:-22px;right:-14px;}
+  .s-playful .p3{background:#ff6fb5;bottom:14px;left:-20px;}
+  .s-playful h4{position:relative;font-size:26px;font-weight:600;line-height:1.02;margin:0;}
+  .s-playful h4 em{font-style:normal;color:#ff4da6;}
+  .s-playful p{position:relative;font-size:12px;font-weight:400;color:#8a5a99;margin:8px 0 0;}
+  .s-playful .btn{position:relative;margin-top:16px;display:inline-block;background:#ff4da6;color:#fff;font-weight:600;font-size:13px;padding:9px 20px;border-radius:999px;box-shadow:0 5px 0 #d62d85;}
+
+  /* 10 · DARK MODE — deep bg, glowing accent */
+  .s-dark{background:#0c0d12;color:#e7e9f0;font-family:"Space Grotesk",sans-serif;padding:24px 22px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  .s-dark .glow{position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(56,232,197,.35),transparent 70%);top:-40px;right:-30px;}
+  .s-dark .nav{position:relative;display:flex;justify-content:space-between;font-size:11px;color:#8a8fa3;}
+  .s-dark .nav b{color:#e7e9f0;}
+  .s-dark h4{position:relative;font-size:23px;font-weight:500;letter-spacing:-.02em;margin:auto 0 0;line-height:1.12;}
+  .s-dark h4 span{color:#38e8c5;}
+  .s-dark p{position:relative;font-size:12px;color:#8a8fa3;margin:8px 0 0;}
+  .s-dark .btn{position:relative;margin-top:14px;align-self:flex-start;background:#38e8c5;color:#052b23;font-weight:600;font-size:11px;padding:9px 16px;border-radius:8px;box-shadow:0 0 22px rgba(56,232,197,.45);}
+
+  /* 11 · FEMININE — blush, airy serif, delicate */
+  .s-fem{background:linear-gradient(170deg,#fff0f3,#fbe7ef);color:#7a2f4e;font-family:"Cormorant Garamond",serif;padding:24px 22px;display:flex;flex-direction:column;}
+  .s-fem .top{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:#c98aa5;}
+  .s-fem h4{font-size:34px;font-weight:300;font-style:italic;line-height:1;margin:auto 0 0;color:#a03a63;}
+  .s-fem .rule{width:40px;height:1px;background:#dba9bf;margin:12px 0;}
+  .s-fem p{font-size:14px;color:#a7688a;margin:0;font-weight:400;}
+  .s-fem .btn{margin-top:14px;align-self:flex-start;font-family:"Inter",sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#a03a63;border:1px solid #e0b6c7;padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.5);}
+
+  /* 12 · MASCULINE — condensed caps, slate + steel, hard edges */
+  .s-masc{background:#1b1e24;color:#e8ebef;font-family:"Oswald",sans-serif;padding:22px 20px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  .s-masc::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(255,255,255,.02) 9px 10px);}
+  .s-masc .top{position:relative;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#ff6a2b;}
+  .s-masc h4{position:relative;font-size:32px;font-weight:700;line-height:.92;text-transform:uppercase;margin:auto 0 0;letter-spacing:-.01em;}
+  .s-masc h4 span{color:#ff6a2b;}
+  .s-masc .rule{position:relative;height:3px;width:46px;background:#ff6a2b;margin:12px 0;}
+  .s-masc .btn{position:relative;align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1b1e24;background:#e8ebef;padding:9px 18px;clip-path:polygon(0 0,100% 0,92% 100%,0 100%);}
+
+  /* 13 · LUXURIOUS — black / gold / spaced caps / restraint */
+  .s-lux{background:#0f0e0c;color:#f2ead8;font-family:"Cormorant Garamond",serif;padding:26px 24px;display:flex;flex-direction:column;text-align:center;align-items:center;justify-content:center;position:relative;}
+  .s-lux .frame{position:absolute;inset:12px;border:1px solid rgba(197,164,101,.5);}
+  .s-lux .top{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#c5a465;}
+  .s-lux h4{font-size:30px;font-weight:400;letter-spacing:.04em;margin:12px 0;line-height:1.05;}
+  .s-lux .div{width:34px;height:1px;background:#c5a465;}
+  .s-lux .sub{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:#8a8272;margin-top:12px;}
+
+  /* 14 · HAND-DRAWN / ILLUSTRATED — sketchy, paper, marker */
+  .s-hand{background:#fffdf5;color:#2b2b2b;font-family:"Caveat",cursive;padding:20px;display:flex;flex-direction:column;position:relative;}
+  .s-hand::before{content:"";position:absolute;inset:9px;border:2.5px solid #2b2b2b;border-radius:14px 10px 16px 8px/8px 16px 10px 14px;}
+  .s-hand .top{position:relative;font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#e0603a;}
+  .s-hand h4{position:relative;font-size:32px;line-height:.95;margin:6px 0 0;font-weight:700;}
+  .s-hand .squig{position:relative;margin:2px 0 8px;}
+  .s-hand p{position:relative;font-size:17px;color:#555;margin:0;}
+  .s-hand .btn{position:relative;align-self:flex-start;margin-top:auto;font-size:16px;font-weight:700;color:#fffdf5;background:#3a7d44;padding:5px 16px;border-radius:16px 12px 18px 10px/10px 18px 12px 16px;transform:rotate(-2deg);}
+
+  /* 15 · BOHO — earthy rust/sage/sand, organic warmth */
+  .s-boho{background:#e9dcc4;color:#5b4a36;font-family:"Cormorant Garamond",serif;padding:22px 20px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  .s-boho .arch{position:absolute;top:16px;right:18px;width:60px;height:74px;border-radius:30px 30px 0 0;background:#c2703d;opacity:.85;}
+  .s-boho .arch::after{content:"";position:absolute;inset:8px 8px 0;border-radius:24px 24px 0 0;border:1px solid #e9dcc4;}
+  .s-boho .top{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#8a7a52;}
+  .s-boho h4{font-size:30px;font-weight:400;font-style:italic;line-height:1;margin:auto 0 0;color:#7a5a38;}
+  .s-boho .rule{width:50px;height:2px;background:#8a9a6a;margin:12px 0;border-radius:2px;}
+  .s-boho p{font-size:13px;color:#7a6a52;margin:0;letter-spacing:.02em;}
+
+  /* 16 · Y2K — chrome gradient, bubbly, cyber sparkle */
+  .s-y2k{background:linear-gradient(150deg,#c1e7ff,#e9c1ff 55%,#ffd6f2);color:#2a1a5e;font-family:"Rubik",sans-serif;padding:22px 20px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  .s-y2k .spark{position:absolute;font-family:"Silkscreen",monospace;color:#fff;text-shadow:0 0 6px #d36bff;}
+  .s-y2k .sp1{top:14px;right:16px;font-size:16px;}
+  .s-y2k .sp2{bottom:44px;left:14px;font-size:11px;}
+  .s-y2k .pill{font-family:"Silkscreen",monospace;font-size:8px;letter-spacing:.05em;background:#2a1a5e;color:#7ef9ff;padding:4px 9px;border-radius:999px;width:max-content;}
+  .s-y2k h4{font-size:27px;font-weight:800;line-height:.98;margin:12px 0 0;background:linear-gradient(#ff5cc8,#7b3ff2);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:1px 1px 0 rgba(255,255,255,.6);}
+  .s-y2k .btn{margin-top:auto;align-self:flex-start;font-weight:600;font-size:12px;color:#2a1a5e;background:linear-gradient(#ffffff,#cfe6ff);border:2px solid #fff;box-shadow:0 3px 0 #9a7bd8, inset 0 1px 3px #fff;padding:8px 18px;border-radius:999px;}
+
+  /* 17 · BRANDED / CUSTOM — a cohesive fictional identity system */
+  .s-brand{background:#0a3d3a;color:#f3efe4;font-family:"Bricolage Grotesque",sans-serif;padding:22px 20px;display:flex;flex-direction:column;position:relative;}
+  .s-brand .logo{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:-.02em;font-size:15px;}
+  .s-brand .logo .glyph{width:20px;height:20px;background:#e6b64c;border-radius:50% 50% 50% 0;transform:rotate(45deg);}
+  .s-brand h4{font-size:25px;font-weight:800;letter-spacing:-.03em;line-height:1;margin:auto 0 0;}
+  .s-brand h4 span{color:#e6b64c;}
+  .s-brand p{font-size:12px;color:#a8c0bd;margin:8px 0 0;}
+  .s-brand .btn{margin-top:14px;align-self:flex-start;background:#e6b64c;color:#0a3d3a;font-weight:700;font-size:11px;padding:9px 16px;border-radius:8px;}
+
+  /* 18 · PROGRESSIVE / APP-LIKE — mobile UI, cards, bottom nav */
+  .s-app{background:#eef1f6;font-family:"Inter",sans-serif;color:#131722;display:flex;flex-direction:column;padding:16px 16px 0;position:relative;}
+  .s-app .status{display:flex;justify-content:space-between;font-size:9px;color:#8a91a3;font-weight:600;}
+  .s-app h4{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:10px 0 10px;}
+  .s-app .tile{background:#fff;border-radius:14px;padding:11px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 10px -6px rgba(0,0,0,.25);margin-bottom:8px;}
+  .s-app .tile .av{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#6d5efc,#a78bfa);flex:none;}
+  .s-app .tile .tx{flex:1;}
+  .s-app .tile .tx b{font-size:12px;display:block;}
+  .s-app .tile .tx small{font-size:10px;color:#8a91a3;}
+  .s-app .tile .pill{font-size:9px;font-weight:600;color:#6d5efc;background:#efeaff;padding:3px 8px;border-radius:999px;}
+  .s-app .dock{margin-top:auto;background:#fff;border-radius:16px 16px 0 0;display:flex;justify-content:space-around;padding:10px 0 12px;box-shadow:0 -3px 14px -8px rgba(0,0,0,.3);}
+  .s-app .dock i{width:20px;height:20px;border-radius:6px;background:#d4d9e4;display:block;}
+  .s-app .dock i.on{background:#6d5efc;}
+
+  /* 19 · CLEAN & SIMPLE — clear, friendly, uncluttered (content-full) */
+  .s-clean{background:#fff;color:#1f2733;font-family:"Inter",sans-serif;padding:22px 22px;display:flex;flex-direction:column;}
+  .s-clean .nav{display:flex;align-items:center;gap:12px;font-size:11px;color:#6b7280;}
+  .s-clean .nav b{margin-right:auto;color:#111;font-weight:700;}
+  .s-clean h4{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:18px 0 6px;line-height:1.15;}
+  .s-clean p{font-size:12.5px;color:#6b7280;margin:0;max-width:90%;}
+  .s-clean .btn{margin-top:16px;align-self:flex-start;background:#111827;color:#fff;font-size:12px;font-weight:500;padding:10px 18px;border-radius:8px;}
+  .s-clean .ticks{margin-top:auto;display:flex;gap:14px;font-size:10.5px;color:#6b7280;}
+  .s-clean .ticks span::before{content:"✓";color:#16a34a;font-weight:700;margin-right:4px;}
+
+  /* 20 · UNCONVENTIONAL / EXPERIMENTAL — broken grid, clashing type */
+  .s-exp{background:#101014;color:#f0f0e8;font-family:"Space Mono",monospace;position:relative;overflow:hidden;padding:18px;}
+  .s-exp .num{position:absolute;top:-16px;left:6px;font-family:"Fraunces",serif;font-weight:900;font-size:100px;color:#1c1c22;line-height:1;}
+  .s-exp .rot{position:absolute;top:20px;right:-10px;writing-mode:vertical-rl;font-size:9px;letter-spacing:.3em;color:#7cf24a;text-transform:uppercase;}
+  .s-exp h4{position:relative;font-family:"Fraunces",serif;font-style:italic;font-weight:900;font-size:30px;line-height:.9;margin:20px 0 0;mix-blend-mode:difference;}
+  .s-exp .frag{position:relative;font-size:10px;color:#f24a8a;margin-top:8px;letter-spacing:.05em;}
+  .s-exp .frag2{position:relative;font-size:10px;color:#7cf24a;margin-top:2px;transform:translateX(40px);}
+  .s-exp .btn{position:absolute;bottom:14px;right:14px;font-size:10px;background:#7cf24a;color:#101014;padding:6px 10px;transform:rotate(3deg);font-weight:700;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="head-inner">
+    <div class="brandline">
+      <svg class="mark" viewBox="0 0 26 26" aria-hidden="true">
+        <rect x="0" y="20" width="6" height="6"/>
+        <rect x="7" y="13" width="6" height="6"/>
+        <rect x="14" y="6" width="6" height="6"/>
+        <rect x="20" y="0" width="6" height="6"/>
+      </svg>
+      <div>
+        <h1 class="title">Website Design Styles</h1>
+        <p class="subtitle">Visual reference · 20 aesthetics</p>
+      </div>
+    </div>
+    <div class="tools">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input id="q" type="search" placeholder="Search styles…" autocomplete="off">
+      </label>
+      <span class="count" id="count">20 / 20</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="filters" id="filters">
+    <button class="chip" data-fam="all" aria-pressed="true">All</button>
+    <button class="chip" data-fam="neutral" aria-pressed="false">Neutral</button>
+    <button class="chip" data-fam="bold" aria-pressed="false">Bold</button>
+    <button class="chip" data-fam="soft" aria-pressed="false">Soft</button>
+    <button class="chip" data-fam="dark" aria-pressed="false">Dark</button>
+    <button class="chip" data-fam="warm" aria-pressed="false">Warm</button>
+    <button class="chip" data-fam="tech" aria-pressed="false">Tech</button>
+    <button class="chip" data-fam="hand" aria-pressed="false">Hand-made</button>
+  </div>
+
+  <section class="grid" id="grid">
+
+    <!-- 1 MINIMALIST -->
+    <article class="card" data-fam="neutral" data-kw="minimalist minimal whitespace restraint less clean simple">
+      <div class="pv s-minimal">
+        <div class="top">Studio</div>
+        <h4>Space is the design.</h4>
+        <div class="rule"></div>
+        <div class="foot">Work — About — Contact</div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Minimalist</h3><span class="spec-idx">01</span></div>
+        <p class="spec-desc">Strip to essentials. Emptiness carries as much weight as content; one accent at most.</p>
+        <div class="swatches"><i style="background:#fbfbfa"></i><i style="background:#111"></i><i style="background:#e5e5e5"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Light grotesk (Inter 300), tight tracking</dd>
+          <dt>Signature</dt><dd>Generous whitespace, hairline rules</dd>
+          <dt>Best for</dt><dd>Portfolios, luxury goods, design studios</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 2 MAXIMALIST -->
+    <article class="card" data-fam="bold" data-kw="maximalist maximal loud busy layered clash more">
+      <div class="pv s-maxi">
+        <span class="star">★</span>
+        <div class="blob b1"></div><div class="blob b2"></div>
+        <h4>MORE<br>IS MORE</h4>
+        <div class="band">no empty space allowed</div>
+        <span class="tag">↯ WOW</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Maximalist</h3><span class="spec-idx">02</span></div>
+        <p class="spec-desc">Abundance on purpose. Clashing color, layered shapes, oversized type — controlled chaos.</p>
+        <div class="swatches"><i style="background:#ffde00"></i><i style="background:#ff2d75"></i><i style="background:#00b3ff"></i><i style="background:#111"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Heavy display (Archivo Black), stacked</dd>
+          <dt>Signature</dt><dd>Overlap, outline text, tilted badges</dd>
+          <dt>Best for</dt><dd>Music, fashion drops, creative brands</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 3 MODERN -->
+    <article class="card" data-fam="neutral" data-kw="modern contemporary gradient grotesk saas tech sleek">
+      <div class="pv s-modern">
+        <div class="nav"><span class="dot"></span><span>Product · Pricing · Log in</span></div>
+        <h4>Software that gets out of your way.</h4>
+        <p>Fast, focused, and quietly powerful.</p>
+        <span class="btn">Start free →</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Modern</h3><span class="spec-idx">03</span></div>
+        <p class="spec-desc">Clean geometric sans, soft gradients, rounded corners, and confident whitespace.</p>
+        <div class="swatches"><i style="background:#6d5efc"></i><i style="background:#eef1ff"></i><i style="background:#1a1830"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Space Grotesk, medium weights</dd>
+          <dt>Signature</dt><dd>Subtle gradient wash, 10–12px radii</dd>
+          <dt>Best for</dt><dd>SaaS, startups, product landing pages</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 4 FLAT -->
+    <article class="card" data-fam="bold" data-kw="flat solid shapes no shadow primary bright icon">
+      <div class="pv s-flat">
+        <div class="c1">Flat design</div>
+        <div class="c2"><span class="ic"></span></div>
+        <div class="c3"><span class="tri"></span></div>
+        <div class="c4"><span class="sq"></span></div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Flat</h3><span class="spec-idx">04</span></div>
+        <p class="spec-desc">Solid fills, crisp shapes, no gradients or shadows. Clarity through pure color blocks.</p>
+        <div class="swatches"><i style="background:#2d9cdb"></i><i style="background:#e74c3c"></i><i style="background:#f1c40f"></i><i style="background:#27ae60"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Neutral sans (Inter), high legibility</dd>
+          <dt>Signature</dt><dd>Zero depth, geometric iconography</dd>
+          <dt>Best for</dt><dd>Dashboards, infographics, marketing</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 5 BRUTALIST -->
+    <article class="card" data-fam="bold" data-kw="brutalist neobrutalist raw border offset shadow mono harsh">
+      <div class="pv s-brutal">
+        <div class="bar"><span>[ EST. 2026 ]</span><span>MENU +</span></div>
+        <h4>Raw &amp;<br>honest.</h4>
+        <div class="box">no decoration, just structure</div>
+        <span class="btn">CLICK HERE ▶</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Brutalist / Neo</h3><span class="spec-idx">05</span></div>
+        <p class="spec-desc">Exposed structure, thick black borders, hard offset shadows, monospaced type. Anti-polish.</p>
+        <div class="swatches"><i style="background:#f5f5f0"></i><i style="background:#111"></i><i style="background:#c6ff00"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Space Mono, uppercase, system feel</dd>
+          <dt>Signature</dt><dd>3px borders + solid drop shadow</dd>
+          <dt>Best for</dt><dd>Indie apps, portfolios, web3, zines</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 6 RETRO -->
+    <article class="card" data-fam="warm" data-kw="retro vintage 70s nostalgic warm groovy analog">
+      <div class="pv s-retro">
+        <div class="sun"></div>
+        <div class="badge">Since '74</div>
+        <h4>Good<br><span>vibes</span> only.</h4>
+        <div class="line">— sunset boulevard co. —</div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Retro / Vintage</h3><span class="spec-idx">06</span></div>
+        <p class="spec-desc">Warm sun-faded palette, chunky throwback serifs, rays and stripes. Nostalgia as feeling.</p>
+        <div class="swatches"><i style="background:#efe2c8"></i><i style="background:#c0451f"></i><i style="background:#e8a13c"></i><i style="background:#5a3921"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>DM Serif Display + mono captions</dd>
+          <dt>Signature</dt><dd>Sunburst rays, aged cream ground</dd>
+          <dt>Best for</dt><dd>Coffee, breweries, records, apparel</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 7 EDITORIAL -->
+    <article class="card" data-fam="neutral" data-kw="editorial magazine serif column drop cap typography publishing">
+      <div class="pv s-editorial">
+        <div class="kicker"><span>Feature</span><span>№ 12</span></div>
+        <h4>The quiet return of the printed page.</h4>
+        <div class="body">Type is doing something few screens attempt: it asks the reader to slow down, to sit with the column and let the measure guide the eye across a considered grid.</div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Editorial</h3><span class="spec-idx">07</span></div>
+        <p class="spec-desc">Magazine logic — display serif headlines, hairline rules, drop caps, real columns.</p>
+        <div class="swatches"><i style="background:#fff"></i><i style="background:#111"></i><i style="background:#c0392b"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Playfair / Fraunces, strong hierarchy</dd>
+          <dt>Signature</dt><dd>Drop cap, column rules, kickers</dd>
+          <dt>Best for</dt><dd>Publications, blogs, long-form, agencies</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 8 CORPORATE -->
+    <article class="card" data-fam="neutral" data-kw="corporate professional business trust blue enterprise b2b">
+      <div class="pv s-corp">
+        <div class="nav"><b>Meridian</b><span>Solutions</span><span>Insights</span><span>Contact</span></div>
+        <div class="body">
+          <h4>Reliable systems for growing teams.</h4>
+          <p>Enterprise-grade infrastructure, backed by 24/7 support.</p>
+          <div class="row"><span class="btn">Request demo</span><span class="btn ghost">Learn more</span></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Corporate</h3><span class="spec-idx">08</span></div>
+        <p class="spec-desc">Trust-first. Structured grid, confident navy, neutral sans, measured tone. Nothing risky.</p>
+        <div class="swatches"><i style="background:#0f2a4a"></i><i style="background:#1466c9"></i><i style="background:#eef4fc"></i><i style="background:#fff"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Inter, clear weight ladder</dd>
+          <dt>Signature</dt><dd>Solid nav bar, primary + ghost CTAs</dd>
+          <dt>Best for</dt><dd>B2B, finance, consulting, enterprise</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 9 PLAYFUL -->
+    <article class="card" data-fam="bold" data-kw="playful fun rounded candy bubbly friendly bright kids">
+      <div class="pv s-playful">
+        <div class="blob p1"></div><div class="blob p2"></div><div class="blob p3"></div>
+        <h4>Let's make<br>something <em>fun!</em></h4>
+        <p>Bright, bouncy, and full of personality.</p>
+        <span class="btn">Get started</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Playful</h3><span class="spec-idx">09</span></div>
+        <p class="spec-desc">Rounded everything, candy palette, blobby shapes, chunky buttons with a bounce.</p>
+        <div class="swatches"><i style="background:#ff4da6"></i><i style="background:#ffd23f"></i><i style="background:#5ce1e6"></i><i style="background:#fff4fb"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Fredoka, soft rounded sans</dd>
+          <dt>Signature</dt><dd>Organic blobs, drop-shadow buttons</dd>
+          <dt>Best for</dt><dd>Kids, games, food, consumer apps</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 10 DARK MODE -->
+    <article class="card" data-fam="dark" data-kw="dark mode night neon glow contrast developer moody">
+      <div class="pv s-dark">
+        <div class="glow"></div>
+        <div class="nav"><b>Nyx</b><span>Docs · Pricing</span></div>
+        <h4>Built for the <span>night shift.</span></h4>
+        <p>Low glare, high focus. Easy on the eyes.</p>
+        <span class="btn">Try it dark</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Dark Mode</h3><span class="spec-idx">10</span></div>
+        <p class="spec-desc">Deep near-black ground, high-contrast text, one glowing accent for energy and focus.</p>
+        <div class="swatches"><i style="background:#0c0d12"></i><i style="background:#38e8c5"></i><i style="background:#e7e9f0"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Space Grotesk, cool grays</dd>
+          <dt>Signature</dt><dd>Radial glow, luminous CTA</dd>
+          <dt>Best for</dt><dd>Dev tools, crypto, gaming, media</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 11 FEMININE -->
+    <article class="card" data-fam="soft" data-kw="feminine soft blush pink delicate elegant beauty romantic">
+      <div class="pv s-fem">
+        <div class="top">Atelier Rose</div>
+        <h4>Softly<br>spoken.</h4>
+        <div class="rule"></div>
+        <p>Beauty in the quiet details.</p>
+        <span class="btn">Discover</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Feminine</h3><span class="spec-idx">11</span></div>
+        <p class="spec-desc">Blush gradients, airy italic serifs, delicate rules and pill outlines. Soft, not saccharine.</p>
+        <div class="swatches"><i style="background:#fff0f3"></i><i style="background:#a03a63"></i><i style="background:#dba9bf"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Cormorant italic + fine sans caps</dd>
+          <dt>Signature</dt><dd>Thin rules, low-contrast blush wash</dd>
+          <dt>Best for</dt><dd>Beauty, wellness, boutique, weddings</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 12 MASCULINE -->
+    <article class="card" data-fam="dark" data-kw="masculine bold rugged industrial strong condensed slate steel">
+      <div class="pv s-masc">
+        <div class="top">/// Forge Co.</div>
+        <h4>Built to<br><span>outlast.</span></h4>
+        <div class="rule"></div>
+        <span class="btn">Shop gear</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Masculine</h3><span class="spec-idx">12</span></div>
+        <p class="spec-desc">Condensed uppercase, slate + steel, sharp angled cuts and an industrial texture.</p>
+        <div class="swatches"><i style="background:#1b1e24"></i><i style="background:#ff6a2b"></i><i style="background:#e8ebef"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Oswald condensed, heavy caps</dd>
+          <dt>Signature</dt><dd>Angled clip buttons, diagonal texture</dd>
+          <dt>Best for</dt><dd>Fitness, automotive, tools, barbers</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 13 LUXURIOUS -->
+    <article class="card" data-fam="dark" data-kw="luxurious luxury premium gold elegant expensive refined black">
+      <div class="pv s-lux">
+        <div class="frame"></div>
+        <div class="top">Maison</div>
+        <h4>Quiet<br>Luxury</h4>
+        <div class="div"></div>
+        <div class="sub">Est. MCMXCII</div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Luxurious</h3><span class="spec-idx">13</span></div>
+        <p class="spec-desc">Black, gold and cream. Wide letter-spacing, thin serifs, framed restraint. Say less.</p>
+        <div class="swatches"><i style="background:#0f0e0c"></i><i style="background:#c5a465"></i><i style="background:#f2ead8"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Cormorant serif + spaced sans caps</dd>
+          <dt>Signature</dt><dd>Gold hairline frame, centered symmetry</dd>
+          <dt>Best for</dt><dd>Jewelry, hospitality, real estate, spirits</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 14 HAND-DRAWN -->
+    <article class="card" data-fam="hand" data-kw="hand drawn illustrated sketchy doodle marker crafted organic">
+      <div class="pv s-hand">
+        <div class="top">✎ made by hand</div>
+        <h4>Draw outside<br>the lines.</h4>
+        <svg class="squig" width="80" height="10" viewBox="0 0 80 10"><path d="M1 5 Q10 1 20 5 T40 5 T60 5 T79 5" stroke="#e0603a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+        <p>little imperfections, big charm</p>
+        <span class="btn">say hello!</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Hand-drawn</h3><span class="spec-idx">14</span></div>
+        <p class="spec-desc">Marker scripts, wobbly borders, doodles and paper warmth. Human, imperfect, friendly.</p>
+        <div class="swatches"><i style="background:#fffdf5"></i><i style="background:#2b2b2b"></i><i style="background:#e0603a"></i><i style="background:#3a7d44"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Caveat script + mono labels</dd>
+          <dt>Signature</dt><dd>Sketch borders, squiggles, tilt</dd>
+          <dt>Best for</dt><dd>Illustrators, crafts, cafes, kids' brands</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 15 BOHO -->
+    <article class="card" data-fam="warm" data-kw="boho bohemian earthy terracotta sage natural organic arch">
+      <div class="pv s-boho">
+        <div class="arch"></div>
+        <div class="top">Wander &amp; Co.</div>
+        <h4>Rooted<br>&amp; free.</h4>
+        <div class="rule"></div>
+        <p>Earth tones, slow living.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Boho</h3><span class="spec-idx">15</span></div>
+        <p class="spec-desc">Earthy terracotta, sage and sand, arches and organic curves, relaxed serif italics.</p>
+        <div class="swatches"><i style="background:#e9dcc4"></i><i style="background:#c2703d"></i><i style="background:#8a9a6a"></i><i style="background:#7a5a38"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Cormorant italic, warm and soft</dd>
+          <dt>Signature</dt><dd>Arch shapes, natural clay palette</dd>
+          <dt>Best for</dt><dd>Wellness, travel, ceramics, lifestyle</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 16 Y2K -->
+    <article class="card" data-fam="tech" data-kw="y2k 2000s cyber chrome bubbly nostalgic sparkle frutiger">
+      <div class="pv s-y2k">
+        <span class="spark sp1">✦</span><span class="spark sp2">✶</span>
+        <div class="pill">★ NEW DROP</div>
+        <h4>cyber<br>dream<br>2000</h4>
+        <span class="btn">enter site »</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Y2K</h3><span class="spec-idx">16</span></div>
+        <p class="spec-desc">Chrome-and-bubble nostalgia: icy gradients, pixel fonts, sparkles and glossy buttons.</p>
+        <div class="swatches"><i style="background:#c1e7ff"></i><i style="background:#e9c1ff"></i><i style="background:#ff5cc8"></i><i style="background:#2a1a5e"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Rubik + Silkscreen pixel accents</dd>
+          <dt>Signature</dt><dd>Glossy gradient pills, sparkle glyphs</dd>
+          <dt>Best for</dt><dd>Streetwear, music, Gen-Z DTC, events</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 17 BRANDED -->
+    <article class="card" data-fam="neutral" data-kw="branded custom identity system logo cohesive tokens signature">
+      <div class="pv s-brand">
+        <div class="logo"><span class="glyph"></span>Verdant</div>
+        <h4>One system.<br><span>Every touchpoint.</span></h4>
+        <p>Color, type and mark, moving in sync.</p>
+        <span class="btn">See the brand</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Branded / Custom</h3><span class="spec-idx">17</span></div>
+        <p class="spec-desc">A designed identity — bespoke mark, ownable color and type used with total consistency.</p>
+        <div class="swatches"><i style="background:#0a3d3a"></i><i style="background:#e6b64c"></i><i style="background:#f3efe4"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Distinctive pairing (e.g. Bricolage)</dd>
+          <dt>Signature</dt><dd>Custom logo glyph, repeated tokens</dd>
+          <dt>Best for</dt><dd>Anyone building a real brand, not a template</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 18 PROGRESSIVE / APP -->
+    <article class="card" data-fam="tech" data-kw="progressive app pwa mobile ui card bottom nav ios native">
+      <div class="pv s-app">
+        <div class="status"><span>9:41</span><span>▲ ▮ ⌁</span></div>
+        <h4>Today</h4>
+        <div class="tile"><span class="av"></span><div class="tx"><b>Morning run</b><small>5.2 km · 28 min</small></div><span class="pill">Done</span></div>
+        <div class="tile"><span class="av" style="background:linear-gradient(135deg,#ff9f6d,#ff6d9f)"></span><div class="tx"><b>Stand-up</b><small>10:00 · Team sync</small></div><span class="pill">Soon</span></div>
+        <div class="dock"><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Progressive / App</h3><span class="spec-idx">18</span></div>
+        <p class="spec-desc">Native-app feel on the web: card stacks, pill tags, a bottom dock, system-style type.</p>
+        <div class="swatches"><i style="background:#eef1f6"></i><i style="background:#6d5efc"></i><i style="background:#fff"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>System sans (Inter), tight and clear</dd>
+          <dt>Signature</dt><dd>Floating cards, tab bar, soft shadows</dd>
+          <dt>Best for</dt><dd>PWAs, mobile-first products, tools</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 19 CLEAN & SIMPLE -->
+    <article class="card" data-fam="neutral" data-kw="clean simple clear friendly uncluttered legible approachable">
+      <div class="pv s-clean">
+        <div class="nav"><b>Clario</b><span>Features</span><span>Pricing</span><span>Log in</span></div>
+        <h4>Everything you need. Nothing you don't.</h4>
+        <p>Clear words, obvious buttons, room to breathe.</p>
+        <span class="btn">Get started</span>
+        <div class="ticks"><span>No clutter</span><span>Easy to scan</span></div>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Clean &amp; Simple</h3><span class="spec-idx">19</span></div>
+        <p class="spec-desc">Content-full but calm — clear hierarchy, one obvious action, friendly and legible.</p>
+        <div class="swatches"><i style="background:#fff"></i><i style="background:#111827"></i><i style="background:#16a34a"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Inter, comfortable sizes</dd>
+          <dt>Signature</dt><dd>Single clear CTA, checkmarked proof</dd>
+          <dt>Best for</dt><dd>Most small-business sites, services</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 20 UNCONVENTIONAL -->
+    <article class="card" data-fam="dark" data-kw="unconventional experimental broken grid avant garde weird clash">
+      <div class="pv s-exp">
+        <div class="num">?</div>
+        <div class="rot">no rules here</div>
+        <h4>break the<br>grid.</h4>
+        <div class="frag">// type as texture</div>
+        <div class="frag2">// meaning &gt; order</div>
+        <span class="btn">???</span>
+      </div>
+      <div class="spec">
+        <div class="spec-top"><h3 class="spec-name">Unconventional</h3><span class="spec-idx">20</span></div>
+        <p class="spec-desc">Rules broken on purpose — overlaps, mismatched type, unexpected color, off-grid tension.</p>
+        <div class="swatches"><i style="background:#101014"></i><i style="background:#7cf24a"></i><i style="background:#f24a8a"></i></div>
+        <dl class="meta">
+          <dt>Type</dt><dd>Serif + mono collision, mixed axes</dd>
+          <dt>Signature</dt><dd>Broken grid, rotated + blended text</dd>
+          <dt>Best for</dt><dd>Art, fashion, portfolios, statements</dd>
+        </dl>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="empty" id="empty">No styles match that search. <a href="#" id="reset" style="color:inherit;">Reset →</a></div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <span class="foot-slogan">Big starts with one pixel.</span>
+    <span class="foot-meta">Design reference · Grand Nash · 20 styles</span>
+  </div>
+</footer>
+
+<script>
+  const grid=document.getElementById('grid');
+  const cards=[...grid.querySelectorAll('.card')];
+  const q=document.getElementById('q');
+  const count=document.getElementById('count');
+  const empty=document.getElementById('empty');
+  const filters=document.getElementById('filters');
+  let fam='all';
+
+  function apply(){
+    const term=q.value.trim().toLowerCase();
+    let shown=0;
+    cards.forEach(c=>{
+      const matchFam = fam==='all' || c.dataset.fam===fam;
+      const hay=(c.dataset.kw+' '+c.querySelector('.spec-name').textContent).toLowerCase();
+      const matchTerm = !term || hay.includes(term);
+      const on = matchFam && matchTerm;
+      c.style.display = on ? '' : 'none';
+      if(on) shown++;
+    });
+    count.textContent = shown+' / '+cards.length;
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  q.addEventListener('input',apply);
+  filters.addEventListener('click',e=>{
+    const b=e.target.closest('.chip'); if(!b) return;
+    fam=b.dataset.fam;
+    filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c===b));
+    apply();
+  });
+  document.getElementById('reset').addEventListener('click',e=>{
+    e.preventDefault(); q.value=''; fam='all';
+    filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c.dataset.fam==='all'));
+    apply();
+  });
+</script>
+</body>
+</html>
